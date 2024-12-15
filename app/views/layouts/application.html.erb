@@ -1,7 +1,22 @@
 <!DOCTYPE html>
 <html class="h-full bg-gray-50">
   <head>
-    <title>TeachingJobs</title>
+    <% set_meta_tags site: 'TeachingJobs',
+                     reverse: true,
+                     separator: '|',
+                     description: 'Find your next teaching position or hire qualified educators. TeachingJobs connects passionate teachers with outstanding educational institutions.',
+                     keywords: 'teaching jobs, education jobs, teacher positions, school jobs, teaching careers',
+                     og: {
+                       site_name: 'TeachingJobs',
+                       type: 'website',
+                       url: request.original_url,
+                       image: asset_url('og-image.avif')
+                     },
+                     twitter: {
+                       card: 'summary_large_image',
+                       site: '@teachingjobs'
+                     } %>
+    <%= display_meta_tags %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>

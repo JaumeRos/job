@@ -1,3 +1,8 @@
+<%
+  meta_title "Teaching Jobs | Find Education Positions"
+  meta_description "Discover teaching jobs worldwide. Connect with top schools and educational institutions. Post teaching jobs or find your next position in education."
+%>
+
 <div class="bg-white">
   <!-- Hero section -->
   <div class="relative">
@@ -11,8 +16,10 @@
         <div class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
           <h1 class="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
             <span class="block text-white">Teaching Jobs</span>
-            <span class="block text-teal-200">Find Your Dream Teaching Position</span>
           </h1>
+          <h2 class="text-center text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl mt-4">
+            <span class="block text-teal-200">Find Your Dream Teaching Position</span>
+          </h2>
           <p class="mt-6 max-w-lg mx-auto text-center text-xl text-teal-100 sm:max-w-3xl">
             Connect with top schools and educational institutions looking for passionate educators like you.
           </p>
@@ -40,37 +47,59 @@
         </p>
       </div>
       <div class="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-        <% @recent_jobs.each do |job| %>
+        <% @jobs.each do |job| %>
           <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
-            <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+            <%= link_to job_path(job), class: "flex-1 bg-white p-6 flex flex-col justify-between hover:bg-gray-50" do %>
               <div class="flex-1">
-                <p class="text-sm font-medium text-teal-600">
-                  <%= job.job_type %>
-                </p>
-                <div class="block mt-2">
-                  <p class="text-xl font-semibold text-gray-900"><%= job.title %></p>
-                  <p class="mt-3 text-base text-gray-500"><%= truncate(job.description, length: 150) %></p>
-                </div>
-              </div>
-              <div class="mt-6 flex items-center">
-                <div class="flex-shrink-0">
-                  <span class="sr-only"><%= job.company_name %></span>
-                  <div class="h-10 w-10 bg-teal-100 rounded-full flex items-center justify-center">
-                    <span class="text-teal-600 font-bold text-xl"><%= job.company_name.first.upcase %></span>
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                      <div class="h-12 w-12 rounded-full bg-teal-100 flex items-center justify-center">
+                        <svg class="h-6 w-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="ml-4">
+                      <h3 class="text-lg font-medium text-teal-600 truncate"><%= job.title %></h3>
+                      <p class="mt-1 text-sm text-gray-500">
+                        <%= job.company_name %> • <%= job.location %>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="ml-2 flex-shrink-0">
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                      <%= job.job_type %>
+                    </span>
                   </div>
                 </div>
-                <div class="ml-3">
-                  <p class="text-sm font-medium text-gray-900">
-                    <%= job.company_name %>
-                  </p>
-                  <div class="flex space-x-1 text-sm text-gray-500">
-                    <span><%= job.location %></span>
-                    <span aria-hidden="true">&middot;</span>
-                    <time datetime="<%= job.created_at.iso8601 %>"><%= time_ago_in_words(job.created_at) %> ago</time>
+                <div class="mt-4">
+                  <div class="sm:flex sm:justify-between">
+                    <div class="sm:flex">
+                      <p class="flex items-center text-sm text-gray-500">
+                        <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <%= job.salary_range %>
+                      </p>
+                      <p class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:ml-6">
+                        <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <%= job.location %>
+                      </p>
+                    </div>
+                    <div class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
+                      <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                      </svg>
+                      Posted <%= time_ago_in_words(job.created_at) %> ago
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            <% end %>
           </div>
         <% end %>
       </div>

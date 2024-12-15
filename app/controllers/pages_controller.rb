@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   def home
     @recent_jobs = Job.published.recent.limit(3)
+    @jobs = Job.published.order(created_at: :desc)
   end
 
   def pricing
