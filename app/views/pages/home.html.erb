@@ -1,174 +1,155 @@
-<!-- Hero Section -->
-<div class="relative bg-white overflow-hidden">
-  <div class="max-w-7xl mx-auto">
-    <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-      <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2" fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-        <polygon points="50,0 100,0 50,100 0,100" />
-      </svg>
-
-      <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-        <div class="sm:text-center lg:text-left">
-          <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-            <span class="block xl:inline">Find Your Next</span>
-            <span class="block text-teal-600 xl:inline">Teaching Position</span>
+<div class="bg-white">
+  <!-- Hero section -->
+  <div class="relative">
+    <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100"></div>
+    <div class="w-full">
+      <div class="relative shadow-xl sm:overflow-hidden">
+        <div class="absolute inset-0">
+          <img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Teacher with students">
+          <div class="absolute inset-0 bg-gradient-to-r from-teal-800 to-teal-700 mix-blend-multiply"></div>
+        </div>
+        <div class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
+          <h1 class="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+            <span class="block text-white">Teaching Jobs</span>
+            <span class="block text-teal-200">Find Your Dream Teaching Position</span>
           </h1>
-          <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-            Connect with top educational institutions and discover opportunities that match your passion for teaching.
+          <p class="mt-6 max-w-lg mx-auto text-center text-xl text-teal-100 sm:max-w-3xl">
+            Connect with top schools and educational institutions looking for passionate educators like you.
           </p>
-          <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-            <%= link_to "Browse Jobs", jobs_path, class: "inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700 md:py-4 md:text-lg md:px-10" %>
-            <%= link_to "Post a Job", new_job_path, class: "mt-3 sm:mt-0 sm:ml-3 inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-teal-700 bg-teal-100 hover:bg-teal-200 md:py-4 md:text-lg md:px-10" %>
+          <div class="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
+            <div class="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
+              <%= link_to "Browse Jobs", jobs_path, class: "flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-teal-700 bg-white hover:bg-teal-50 sm:px-8" %>
+              <%= link_to "Post a Job", new_job_path, class: "flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-teal-500 bg-opacity-60 hover:bg-opacity-70 sm:px-8" %>
+            </div>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   </div>
-  <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-    <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2970&q=80" alt="Teacher in classroom">
-  </div>
-</div>
 
-<!-- Features Section -->
-<div class="py-12 bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="lg:text-center">
-      <h2 class="text-base text-teal-600 font-semibold tracking-wide uppercase">Features</h2>
-      <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-        Everything you need to find the perfect teaching job
-      </p>
-      <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-        Our platform is designed to make the job search process simple and effective for educators.
-      </p>
+  <!-- Recent jobs section -->
+  <div class="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
+    <div class="absolute inset-0">
+      <div class="bg-white h-1/3 sm:h-2/3"></div>
     </div>
-
-    <div class="mt-10">
-      <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
-        <div class="relative">
-          <dt>
-            <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-teal-500 text-white">
-              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Curated Job Listings</p>
-          </dt>
-          <dd class="mt-2 ml-16 text-base text-gray-500">
-            High-quality teaching positions from reputable educational institutions.
-          </dd>
-        </div>
-
-        <div class="relative">
-          <dt>
-            <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-teal-500 text-white">
-              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
-              </svg>
-            </div>
-            <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Fair Compensation</p>
-          </dt>
-          <dd class="mt-2 ml-16 text-base text-gray-500">
-            Transparent salary ranges and competitive benefits packages.
-          </dd>
-        </div>
-
-        <div class="relative">
-          <dt>
-            <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-teal-500 text-white">
-              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Quick Application</p>
-          </dt>
-          <dd class="mt-2 ml-16 text-base text-gray-500">
-            Streamlined application process to help you apply with ease.
-          </dd>
-        </div>
-
-        <div class="relative">
-          <dt>
-            <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-teal-500 text-white">
-              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-              </svg>
-            </div>
-            <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Direct Communication</p>
-          </dt>
-          <dd class="mt-2 ml-16 text-base text-gray-500">
-            Connect directly with schools and hiring managers.
-          </dd>
-        </div>
-      </dl>
-    </div>
-  </div>
-</div>
-
-<!-- Recent Jobs Section -->
-<div class="bg-gray-50 pt-16 pb-20">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center">
-      <h2 class="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
-        Recent Teaching Opportunities
-      </h2>
-      <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
-        Browse our latest teaching positions from top educational institutions.
-      </p>
-    </div>
-
-    <div class="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-      <% Job.published.recent.limit(3).each do |job| %>
-        <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
-          <div class="flex-1 bg-white p-6 flex flex-col justify-between">
-            <div class="flex-1">
-              <p class="text-sm font-medium text-teal-600">
-                <%= job.job_type %>
-              </p>
-              <div class="block mt-2">
-                <p class="text-xl font-semibold text-gray-900"><%= job.title %></p>
-                <p class="mt-3 text-base text-gray-500"><%= truncate(job.description, length: 150) %></p>
-              </div>
-            </div>
-            <div class="mt-6 flex items-center">
-              <div class="flex-shrink-0">
-                <span class="sr-only"><%= job.company_name %></span>
-                <div class="h-10 w-10 rounded-full bg-teal-100 flex items-center justify-center">
-                  <span class="text-teal-600 font-bold text-xl"><%= job.company_name[0].upcase %></span>
-                </div>
-              </div>
-              <div class="ml-3">
-                <p class="text-sm font-medium text-gray-900">
-                  <%= job.company_name %>
+    <div class="relative max-w-7xl mx-auto">
+      <div class="text-center">
+        <h2 class="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">Recent Teaching Opportunities</h2>
+        <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+          Discover the latest teaching positions from schools around the world
+        </p>
+      </div>
+      <div class="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
+        <% @recent_jobs.each do |job| %>
+          <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+            <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+              <div class="flex-1">
+                <p class="text-sm font-medium text-teal-600">
+                  <%= job.job_type %>
                 </p>
-                <div class="flex space-x-1 text-sm text-gray-500">
-                  <span><%= job.location %></span>
-                  <span aria-hidden="true">&middot;</span>
-                  <span><%= job.salary_range %></span>
+                <div class="block mt-2">
+                  <p class="text-xl font-semibold text-gray-900"><%= job.title %></p>
+                  <p class="mt-3 text-base text-gray-500"><%= truncate(job.description, length: 150) %></p>
+                </div>
+              </div>
+              <div class="mt-6 flex items-center">
+                <div class="flex-shrink-0">
+                  <span class="sr-only"><%= job.company_name %></span>
+                  <div class="h-10 w-10 bg-teal-100 rounded-full flex items-center justify-center">
+                    <span class="text-teal-600 font-bold text-xl"><%= job.company_name.first.upcase %></span>
+                  </div>
+                </div>
+                <div class="ml-3">
+                  <p class="text-sm font-medium text-gray-900">
+                    <%= job.company_name %>
+                  </p>
+                  <div class="flex space-x-1 text-sm text-gray-500">
+                    <span><%= job.location %></span>
+                    <span aria-hidden="true">&middot;</span>
+                    <time datetime="<%= job.created_at.iso8601 %>"><%= time_ago_in_words(job.created_at) %> ago</time>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <%= link_to "View Position", job_path(job), class: "block bg-gray-50 text-sm font-medium text-teal-600 text-center px-4 py-4 hover:bg-gray-100" %>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="mt-10 text-center">
-      <%= link_to "View All Positions", jobs_path, class: "inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700" %>
+        <% end %>
+      </div>
+      <div class="mt-10 text-center">
+        <%= link_to "View all positions", jobs_path, class: "inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700" %>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- CTA Section -->
-<div class="bg-teal-700">
-  <div class="max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
-    <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
-      <span class="block">Ready to find your next teaching position?</span>
-    </h2>
-    <p class="mt-4 text-lg leading-6 text-teal-100">
-      Join thousands of educators who have found their perfect teaching job through our platform.
-    </p>
-    <div class="mt-8 flex justify-center">
-      <%= link_to "Get Started Today", new_user_registration_path, class: "inline-flex items-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-teal-600 bg-white hover:bg-teal-50" %>
+  <!-- Features section -->
+  <div class="bg-white py-16 sm:py-24">
+    <div class="relative">
+      <div class="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
+        <div class="relative sm:py-16 lg:py-0">
+          <div class="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0 lg:max-w-none lg:py-20">
+            <!-- Features content -->
+            <div class="relative pt-64 pb-10 rounded-2xl shadow-xl overflow-hidden">
+              <img class="absolute inset-0 h-full w-full object-cover" src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Teacher in classroom">
+            </div>
+          </div>
+        </div>
+
+        <div class="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0">
+          <div class="pt-12 sm:pt-16 lg:pt-20">
+            <h2 class="text-3xl text-gray-900 font-extrabold tracking-tight sm:text-4xl">
+              Why Choose Teaching Jobs?
+            </h2>
+            <div class="mt-6 text-gray-500 space-y-6">
+              <div class="flex">
+                <div class="flex-shrink-0">
+                  <div class="flex items-center justify-center h-12 w-12 rounded-md bg-teal-500 text-white">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-lg font-medium text-gray-900">Curated Opportunities</h3>
+                  <p class="mt-2 text-base text-gray-500">
+                    We carefully review each job posting to ensure quality opportunities for educators.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex">
+                <div class="flex-shrink-0">
+                  <div class="flex items-center justify-center h-12 w-12 rounded-md bg-teal-500 text-white">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-lg font-medium text-gray-900">Direct Connections</h3>
+                  <p class="mt-2 text-base text-gray-500">
+                    Connect directly with schools and educational institutions without intermediaries.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex">
+                <div class="flex-shrink-0">
+                  <div class="flex items-center justify-center h-12 w-12 rounded-md bg-teal-500 text-white">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-lg font-medium text-gray-900">Fast & Efficient</h3>
+                  <p class="mt-2 text-base text-gray-500">
+                    Our platform makes it easy to find and apply to teaching positions quickly.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
