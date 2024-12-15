@@ -1,145 +1,63 @@
 <!DOCTYPE html>
-<html class="h-full bg-gray-100">
+<html class="h-full bg-gray-50">
   <head>
-    <title>TeachingJobs.co - Find Your Next Teaching Position</title>
+    <title>TeachingJobs</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <script src="https://js.stripe.com/v3/"></script>
   </head>
 
   <body class="h-full">
-    <div class="min-h-full flex flex-col">
+    <%= render 'shared/flash' %>
+    
+    <div class="min-h-full">
       <nav class="bg-white shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex justify-between h-16">
             <div class="flex">
-              <%= link_to root_path, class: "flex-shrink-0 flex items-center" do %>
-                <span class="text-2xl font-bold text-teal-600">TeachingJobs.co</span>
-              <% end %>
+              <div class="flex-shrink-0 flex items-center">
+                <%= link_to root_path, class: "text-2xl font-bold text-teal-600" do %>
+                  TeachingJobs
+                <% end %>
+              </div>
+              <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
+                <%= link_to "Home", root_path, class: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" %>
+                <%= link_to "Pricing", pricing_path, class: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" %>
+                <%= link_to "About", about_path, class: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" %>
+                <%= link_to "Contact", contact_path, class: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" %>
+              </div>
             </div>
-            <div class="flex items-center">
+            <div class="hidden sm:ml-6 sm:flex sm:items-center">
               <% if user_signed_in? %>
-                <%= link_to 'Dashboard', dashboard_path, class: "text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium" %>
-                <%= link_to 'Post a Job', new_job_path, class: "ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700" %>
-                <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: "ml-4 text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium" %>
+                <%= link_to "Dashboard", dashboard_path, class: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" %>
+                <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700" %>
               <% else %>
-                <%= link_to 'Sign In', new_user_session_path, class: "text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium" %>
-                <%= link_to 'Sign Up', new_user_registration_path, class: "ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700" %>
+                <%= link_to "Sign In", new_user_session_path, class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-teal-600 bg-white hover:bg-gray-50" %>
+                <%= link_to "Sign Up", new_user_registration_path, class: "ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700" %>
               <% end %>
             </div>
           </div>
         </div>
       </nav>
 
-      <% if notice %>
-        <div class="bg-green-50 p-4">
-          <div class="flex">
-            <div class="flex-shrink-0">
-              <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-              </svg>
-            </div>
-            <div class="ml-3">
-              <p class="text-sm font-medium text-green-800"><%= notice %></p>
-            </div>
-          </div>
-        </div>
-      <% end %>
-
-      <main class="flex-grow">
-        <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+      <main>
+        <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
           <%= yield %>
         </div>
       </main>
 
-      <footer class="bg-white border-t border-gray-200">
-        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-          <div class="xl:grid xl:grid-cols-3 xl:gap-8">
-            <div class="space-y-8 xl:col-span-1">
-              <span class="text-2xl font-bold text-teal-600">TeachingJobs.co</span>
-              <p class="text-gray-500 text-sm mt-4">
-                The leading job board for education professionals. Find your next teaching opportunity today. Connecting passionate educators with outstanding institutions since 2018.
-              </p>
-              <div class="flex space-x-6">
-                <a href="#" class="text-gray-400 hover:text-gray-500">
-                  <span class="sr-only">Twitter</span>
-                  <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/>
-                  </svg>
-                </a>
-                <a href="#" class="text-gray-400 hover:text-gray-500">
-                  <span class="sr-only">LinkedIn</span>
-                  <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                  </svg>
-                </a>
-              </div>
+      <footer class="bg-white">
+        <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="py-8 text-center text-sm text-gray-500">
+            <div class="space-x-4">
+              <%= link_to "Privacy Policy", privacy_policy_path, class: "hover:text-gray-900" %>
+              <%= link_to "Terms of Service", terms_of_service_path, class: "hover:text-gray-900" %>
+              <%= link_to "Careers", careers_path, class: "hover:text-gray-900" %>
             </div>
-            <div class="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
-              <div class="md:grid md:grid-cols-2 md:gap-8">
-                <div>
-                  <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">For Educators</h3>
-                  <ul role="list" class="mt-4 space-y-4">
-                    <li>
-                      <%= link_to "Browse Jobs", root_path, class: "text-base text-gray-500 hover:text-gray-900" %>
-                    </li>
-                    <li>
-                      <%= link_to "Post a Job", new_job_path, class: "text-base text-gray-500 hover:text-gray-900" %>
-                    </li>
-                    <li>
-                      <%= link_to "Pricing", pricing_path, class: "text-base text-gray-500 hover:text-gray-900" %>
-                    </li>
-                  </ul>
-                </div>
-                <div class="mt-12 md:mt-0">
-                  <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Company</h3>
-                  <ul role="list" class="mt-4 space-y-4">
-                    <li>
-                      <%= link_to "About Us", about_path, class: "text-base text-gray-500 hover:text-gray-900" %>
-                    </li>
-                    <li>
-                      <%= link_to "Careers", careers_path, class: "text-base text-gray-500 hover:text-gray-900" %>
-                    </li>
-                    <li>
-                      <%= link_to "Contact", contact_path, class: "text-base text-gray-500 hover:text-gray-900" %>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="md:grid md:grid-cols-2 md:gap-8">
-                <div>
-                  <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Resources</h3>
-                  <ul role="list" class="mt-4 space-y-4">
-                    <li>
-                      <%= link_to "Blog", "#", class: "text-base text-gray-500 hover:text-gray-900" %>
-                    </li>
-                    <li>
-                      <%= link_to "Support", "#", class: "text-base text-gray-500 hover:text-gray-900" %>
-                    </li>
-                  </ul>
-                </div>
-                <div class="mt-12 md:mt-0">
-                  <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Legal</h3>
-                  <ul role="list" class="mt-4 space-y-4">
-                    <li>
-                      <%= link_to "Privacy Policy", privacy_policy_path, class: "text-base text-gray-500 hover:text-gray-900" %>
-                    </li>
-                    <li>
-                      <%= link_to "Terms of Service", terms_of_service_path, class: "text-base text-gray-500 hover:text-gray-900" %>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="mt-12 border-t border-gray-200 pt-8">
-            <p class="text-base text-gray-400 xl:text-center">
-              &copy; <%= Time.current.year %> TeachingJobs.co. All rights reserved.
-            </p>
+            <p class="mt-4">&copy; <%= Time.current.year %> TeachingJobs. All rights reserved.</p>
           </div>
         </div>
       </footer>
