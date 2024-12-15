@@ -22,5 +22,5 @@ Rails.application.routes.draw do
   get 'contact', to: 'pages#contact'
   get 'careers', to: 'pages#careers'
   
-  root 'jobs#index'
+  root 'pages#home'
 end

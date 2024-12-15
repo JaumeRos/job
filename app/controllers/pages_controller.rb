@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def home
+    @recent_jobs = Job.published.recent.limit(3)
   end
 
   def pricing
