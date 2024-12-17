@@ -2,23 +2,12 @@
 
 User-agent: *
 Allow: /
-Allow: /jobs
-Allow: /pricing
-Allow: /contact
-Allow: /careers
-Allow: /privacy-policy
-Allow: /terms
-
-# Disallow private areas
-Disallow: /dashboard
-Disallow: /admin
-Disallow: /users
-Disallow: /account
+Disallow: /dashboard/
+Disallow: /admin/
+Disallow: /users/
+Disallow: /account/
 Disallow: /sign_in
 Disallow: /sign_up
-Disallow: /password
-Disallow: /employers
-Disallow: /candidates
+Disallow: /password/
 
-# Sitemap location
 Sitemap: https://teachingjobs.co/sitemap.xml
