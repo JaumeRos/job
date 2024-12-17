@@ -1,48 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://teachingjobs.co/</loc>
-    <lastmod><%= Time.current.strftime("%Y-%m-%d") %></lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://teachingjobs.co/jobs</loc>
-    <lastmod><%= Time.current.strftime("%Y-%m-%d") %></lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://teachingjobs.co/pricing</loc>
-    <lastmod><%= Time.current.strftime("%Y-%m-%d") %></lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://teachingjobs.co/contact</loc>
-    <lastmod><%= Time.current.strftime("%Y-%m-%d") %></lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://teachingjobs.co/careers</loc>
-    <lastmod><%= Time.current.strftime("%Y-%m-%d") %></lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://teachingjobs.co/privacy-policy</loc>
-    <lastmod><%= Time.current.strftime("%Y-%m-%d") %></lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://teachingjobs.co/terms</loc>
-    <lastmod><%= Time.current.strftime("%Y-%m-%d") %></lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
