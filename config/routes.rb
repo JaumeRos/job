@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   
+  # Sitemap route
+  get 'sitemap.xml', to: 'sitemaps#show', defaults: { format: 'xml' }
+  
   resources :jobs do
     member do
       post :publish
