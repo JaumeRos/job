@@ -2,12 +2,14 @@
 
 User-agent: *
 Allow: /
-Disallow: /dashboard/
-Disallow: /admin/
-Disallow: /users/
-Disallow: /account/
-Disallow: /sign_in
-Disallow: /sign_up
-Disallow: /password/
 
-Sitemap: https://teachingjobs.co/sitemap.xml
+# Disallow certain paths
+Disallow: /pricing
+Disallow: /users/sign_in
+Disallow: /users/sign_up
+Disallow: /users/password
+Disallow: /users/edit
+Disallow: /dashboard
+
+# Sitemap location
+Sitemap: https://teachingjobs.co/sitemap.xml.gz
