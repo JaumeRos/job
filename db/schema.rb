@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_01_07_195030) do
+ActiveRecord::Schema[7.0].define(version: 2025_03_29_093712) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_07_195030) do
     t.string "education_level"
     t.string "category"
     t.boolean "featured", default: false
+    t.datetime "paid_at"
     t.index ["slug"], name: "index_jobs_on_slug", unique: true
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end

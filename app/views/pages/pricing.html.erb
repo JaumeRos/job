@@ -59,7 +59,7 @@
                   <p class="ml-3 text-base text-gray-700">Shared on our social media</p>
                 </li>
               </ul>
-              <%= button_to charges_path, params: { plan: 'standard' }, class: "w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700" do %>
+              <%= button_to charges_path, params: { plan: 'standard', job_id: params[:job_id] }, class: "w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700", data: { turbo: false } do %>
                 Post a Job - $299
               <% end %>
             </div>
@@ -122,7 +122,7 @@
                   <p class="ml-3 text-base text-gray-700">Analytics dashboard</p>
                 </li>
               </ul>
-              <%= button_to charges_path, params: { plan: 'premium' }, class: "w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700" do %>
+              <%= button_to charges_path, params: { plan: 'premium', job_id: params[:job_id] }, class: "w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700", data: { turbo: false } do %>
                 Post a Premium Job - $799
               <% end %>
             </div>

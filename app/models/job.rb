@@ -87,9 +87,15 @@ class Job < ApplicationRecord
   scope :by_education_level, ->(level) { where(education_level: level) }
   scope :by_job_type, ->(type) { where(job_type: type) }
   scope :featured, -> { where(featured: true) }
+  scope :paid, -> { where.not(paid_at: nil) }
+  scope :unpaid, -> { where(paid_at: nil) }
 
   def publish!
-    update(published: true, published_at: Time.current)
+    if paid?
+      update(published: true, published_at: Time.current)
+    else
+      false
+    end
   end
   
   def unpublish!
@@ -98,5 +104,23 @@ class Job < ApplicationRecord
 
   def to_param
     [id, title.parameterize].join('-')
+  end
+
+  def paid?
+    paid_at.present?
+  end
+
+  def mark_as_paid!
+    update(paid_at: Time.current)
+  end
+
+  def status
+    if published?
+      'Published'
+    elsif paid?
+      'Ready to Publish'
+    else
+      'Draft - Payment Required'
+    end
   end
 end

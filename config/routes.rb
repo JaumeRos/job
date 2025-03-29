@@ -6,8 +6,9 @@ Rails.application.routes.draw do
     member do
       post :publish
       post :unpublish
+      get :preview
     end
-    resources :applications, only: [:create]
+    resources :applications, only: [:create, :index]
   end
   
   # Teaching Categories
