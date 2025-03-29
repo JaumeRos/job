@@ -1,0 +1,193 @@
+<%# SEO metadata %>
+<% content_for :title, @page_title %>
+<% content_for :meta_description, @meta_description %>
+
+<%# Schema.org markup %>
+<script type="application/ld+json">
+  <%= raw @schema_markup.to_json %>
+</script>
+
+<div class="bg-white">
+  <!-- Hero section -->
+  <div class="relative bg-teal-800">
+    <div class="absolute inset-0">
+      <img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Teacher with students">
+      <div class="absolute inset-0 bg-teal-800 mix-blend-multiply"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+      <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl"><%= @category %> Teaching Jobs</h1>
+      <p class="mt-6 text-xl text-teal-100 max-w-3xl">Find <%= @category.downcase %> positions at top schools. Browse through <%= @total_jobs %> opportunities and apply to positions that match your expertise.</p>
+      <div class="mt-10">
+        <%= link_to new_job_path, class: "inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-teal-600 bg-white hover:bg-teal-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500" do %>
+          Post a <%= @category %> Job
+          <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 -mr-1 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Featured Jobs Section -->
+  <% if @featured_jobs.any? %>
+    <div class="bg-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Featured <%= @category %> Positions</h2>
+          <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+            Highlighted opportunities in <%= @category.downcase %> teaching
+          </p>
+        </div>
+        <div class="mt-12 grid gap-8 lg:grid-cols-3">
+          <% @featured_jobs.each do |job| %>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <%= link_to job_path(job), class: "block" do %>
+                <div class="p-6">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                      <div class="flex-shrink-0">
+                        <div class="h-12 w-12 rounded-full bg-teal-100 flex items-center justify-center">
+                          <svg class="h-6 w-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="ml-4">
+                        <h3 class="text-lg font-medium text-gray-900"><%= job.title %></h3>
+                        <p class="text-sm text-gray-500"><%= job.company_name %></p>
+                      </div>
+                    </div>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-100 text-teal-800">
+                      Featured
+                    </span>
+                  </div>
+                  <div class="mt-4">
+                    <div class="flex items-center text-sm text-gray-500">
+                      <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      </svg>
+                      <%= job.location %>
+                    </div>
+                    <div class="mt-2 flex items-center text-sm text-gray-500">
+                      <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                      <%= job.salary_range %>
+                    </div>
+                  </div>
+                  <div class="mt-4">
+                    <p class="text-sm text-gray-600 line-clamp-2"><%= job.description %></p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- All Jobs Section -->
+  <div class="bg-gray-50 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">All <%= @category %> Teaching Jobs</h2>
+        <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+          Browse through all available <%= @category.downcase %> teaching positions
+        </p>
+      </div>
+
+      <div class="mt-12 space-y-6">
+        <% @jobs.each do |job| %>
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300">
+            <%= link_to job_path(job), class: "block" do %>
+              <div class="p-6">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                      <div class="h-10 w-10 rounded-full bg-teal-100 flex items-center justify-center">
+                        <svg class="h-5 w-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="ml-4">
+                      <h3 class="text-lg font-medium text-gray-900"><%= job.title %></h3>
+                      <p class="text-sm text-gray-500"><%= job.company_name %></p>
+                    </div>
+                  </div>
+                  <div class="flex items-center space-x-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                      <%= job.job_type %>
+                    </span>
+                    <span class="text-sm text-gray-500">
+                      Posted <%= time_ago_in_words(job.created_at) %> ago
+                    </span>
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <div class="flex items-center space-x-6">
+                    <div class="flex items-center text-sm text-gray-500">
+                      <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      </svg>
+                      <%= job.location %>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-500">
+                      <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                      <%= job.salary_range %>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="text-sm text-gray-600 line-clamp-2"><%= job.description %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEO Content -->
+  <div class="bg-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="prose prose-teal lg:prose-lg mx-auto">
+        <h2>About <%= @category %> Teaching Jobs</h2>
+        <p>Find your next <%= @category.downcase %> teaching position with our curated selection of opportunities. We connect qualified educators with top schools and educational institutions looking for <%= @category.downcase %> teachers.</p>
+
+        <h3>What to Expect in <%= @category %> Teaching Positions</h3>
+        <p>As a <%= @category.downcase %> teacher, you'll have the opportunity to:</p>
+        <ul>
+          <li>Work with students in a specialized teaching environment</li>
+          <li>Develop and implement curriculum specific to <%= @category.downcase %></li>
+          <li>Collaborate with other educators and staff members</li>
+          <li>Make a meaningful impact on students' learning journey</li>
+        </ul>
+
+        <h3>Qualifications for <%= @category %> Teaching Jobs</h3>
+        <p>Most <%= @category.downcase %> teaching positions require:</p>
+        <ul>
+          <li>Relevant teaching certification or license</li>
+          <li>Bachelor's degree in Education or related field</li>
+          <li>Experience in <%= @category.downcase %> education</li>
+          <li>Strong communication and classroom management skills</li>
+        </ul>
+
+        <h3>How to Apply for <%= @category %> Teaching Jobs</h3>
+        <p>To apply for <%= @category.downcase %> teaching positions:</p>
+        <ul>
+          <li>Review the job requirements carefully</li>
+          <li>Prepare your teaching portfolio and resume</li>
+          <li>Write a compelling cover letter highlighting your experience</li>
+          <li>Submit your application through our platform</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div> 

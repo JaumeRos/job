@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_12_14_155712) do
+ActiveRecord::Schema[7.0].define(version: 2025_01_07_195030) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "applications", force: :cascade do |t|
+    t.bigint "job_id", null: false
+    t.bigint "user_id", null: false
+    t.text "cover_letter"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_applications_on_job_id"
+    t.index ["user_id"], name: "index_applications_on_user_id"
+  end
 
   create_table "jobs", force: :cascade do |t|
     t.string "title"
@@ -31,7 +42,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_14_155712) do
     t.datetime "published_at"
     t.boolean "paid", default: false
     t.string "company_website"
+    t.string "country_code"
+    t.string "salary_currency", default: "USD"
+    t.integer "salary_min"
+    t.integer "salary_max"
+    t.text "requirements"
+    t.string "company_logo_url"
     t.string "company_email"
+    t.string "education_level"
+    t.string "category"
+    t.boolean "featured", default: false
     t.index ["slug"], name: "index_jobs_on_slug", unique: true
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
@@ -48,5 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_14_155712) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "applications", "jobs"
+  add_foreign_key "applications", "users"
   add_foreign_key "jobs", "users"
 end

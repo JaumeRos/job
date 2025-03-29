@@ -3,8 +3,8 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy, :publish, :unpublish]
   
   def index
-    @jobs = Job.published.order(created_at: :desc)
-    @jobs = @jobs.page(params[:page]).per(25) if defined?(Kaminari)
+
+    @jobs = Job.all
   end
   
   def show

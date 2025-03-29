@@ -1,0 +1,35 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "JobPosting",
+  "title": "<%= job.title %>",
+  "description": "<%= job.description %>",
+  "datePosted": "<%= job.created_at.iso8601 %>",
+  "validThrough": "<%= (job.created_at + 30.days).iso8601 %>",
+  "employmentType": "<%= job.job_type %>",
+  "hiringOrganization": {
+    "@type": "Organization",
+    "name": "<%= job.company_name %>",
+    "sameAs": "<%= job.company_website %>",
+    "logo": "<%= job.company_logo_url || 'https://teachingjobs.co/default-company-logo.png' %>"
+  },
+  "jobLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "<%= job.location %>",
+      "addressCountry": "<%= job.country_code %>"
+    }
+  },
+  "baseSalary": {
+    "@type": "MonetaryAmount",
+    "currency": "<%= job.salary_currency || 'USD' %>",
+    "value": {
+      "@type": "QuantitativeValue",
+      "minValue": "<%= job.salary_min %>",
+      "maxValue": "<%= job.salary_max %>",
+      "unitText": "YEAR"
+    }
+  }
+}
+</script> 

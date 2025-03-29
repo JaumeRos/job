@@ -1,0 +1,53 @@
+<%# SEO metadata %>
+<% content_for :title, @page_title %>
+<% content_for :meta_description, @meta_description %>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <%# Hero Section %>
+  <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+    <h1 class="text-3xl font-bold text-gray-900 mb-4">Teaching Job Categories</h1>
+    <p class="text-lg text-gray-600 mb-4">
+      Browse teaching jobs by category. Find the perfect teaching position in your specialty.
+    </p>
+  </div>
+
+  <%# Categories Grid %>
+  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <% @categories.each do |category| %>
+      <div class="bg-white rounded-lg shadow-sm p-6">
+        <h2 class="text-xl font-semibold text-gray-900 mb-2">
+          <%= link_to "#{category} Jobs", teaching_category_path(category.parameterize), class: "text-teal-600 hover:text-teal-800" %>
+        </h2>
+        <p class="text-gray-600 mb-4">
+          Find <%= category.downcase %> positions at top schools. Browse open positions and apply today.
+        </p>
+        <%= link_to "View Jobs →", teaching_category_path(category.parameterize), class: "text-teal-600 hover:text-teal-800 font-medium" %>
+      </div>
+    <% end %>
+  </div>
+
+  <%# SEO Content %>
+  <section class="bg-white rounded-lg shadow-sm p-6 mt-8">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Find Your Perfect Teaching Job</h2>
+    <div class="prose max-w-none">
+      <p class="mb-4">
+        Browse teaching jobs across various specialties and subjects. Whether you're looking for positions in Math, Science, English, Art, 
+        or any other subject area, we have teaching opportunities for every specialty.
+      </p>
+      
+      <h3 class="text-xl font-semibold mb-2">Why Choose Teaching?</h3>
+      <ul class="list-disc pl-5 mb-4">
+        <li>Make a difference in students' lives</li>
+        <li>Enjoy a rewarding career with growth opportunities</li>
+        <li>Work in a dynamic and engaging environment</li>
+        <li>Benefit from competitive salaries and benefits</li>
+        <li>Join a respected profession</li>
+      </ul>
+
+      <p>
+        Start your teaching career journey today by exploring our comprehensive list of teaching categories above. 
+        Find the perfect position that matches your qualifications and passion.
+      </p>
+    </div>
+  </section>
+</div> 
