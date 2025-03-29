@@ -44,11 +44,31 @@
             </div>
           </div>
 
+          <div class="sm:col-span-3">
+            <%= f.label :category, class: "block text-sm font-medium text-gray-700" %>
+            <div class="mt-1">
+              <%= f.select :category, 
+                  Job::CATEGORIES.sort,
+                  { prompt: 'Select teaching category' },
+                  class: "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" %>
+            </div>
+          </div>
+
+          <div class="sm:col-span-3">
+            <%= f.label :education_level, class: "block text-sm font-medium text-gray-700" %>
+            <div class="mt-1">
+              <%= f.select :education_level, 
+                  Job::EDUCATION_LEVELS,
+                  { prompt: 'Select education level' },
+                  class: "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" %>
+            </div>
+          </div>
+
           <div class="sm:col-span-6">
             <%= f.label :job_type, class: "block text-sm font-medium text-gray-700" %>
             <div class="mt-1">
               <%= f.select :job_type, 
-                  ['Full-time', 'Part-time', 'Contract', 'Substitute', 'Remote'],
+                  Job::JOB_TYPES,
                   { prompt: 'Select position type' },
                   class: "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" %>
             </div>
